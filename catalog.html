@@ -1,17 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="description" content="Каталог товаров учебного интернет-магазина.">
-  <title>Каталог товаров — Учебный интернет-магазин</title>
-  <link rel="stylesheet" href="css/style.css">
   <meta property="og:type" content="website">
-    <meta property="og:title" content="Учебный интернет-магазин">
-    <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
-    
+  <meta property="og:title" content="Каталог товаров — Учебный интернет-магазин">
+  <meta property="og:description" content="Каталог товаров учебного frontend-проекта.">
+
+  <title>Каталог товаров — Учебный интернет-магазин</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
+
 <body>
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
   <header>
     <div class="site-header">
       <a class="site-logo" href="index.html">New-Balance</a>
@@ -19,17 +26,16 @@
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li><a href="index.html">Главная</a></li>
-          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="catalog.html" aria-current="page">Каталог</a></li>
+          <li><a href="product.html">Товар</a></li>
+          <li><a href="order.html">Заявка</a></li>
           <li><a href="contacts.html">Контакты</a></li>
-          <li><a href="index.html#advantages">Преимущества</a></li>
-          <li><a href="index.html#popular">Популярные товары</a></li>
-          <li><a href="index.html#contacts">Обратная связь</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a href="index.html">Главная</a>
       <span>Каталог</span>
@@ -37,14 +43,15 @@
 
     <section class="section">
       <h1>Каталог товаров</h1>
+
       <p>
-        На этой странице представлен учебный каталог товаров.
-        В дальнейшем здесь будут добавлены фильтры, сортировка и более
-        подробные карточки.
+        В каталоге представлены товары учебного интернет-магазина.
+        Выберите интересующий товар, чтобы посмотреть подробную информацию
+        или оставить заявку.
       </p>
     </section>
 
-    <section class="catalog-layout">
+    <div class="catalog-layout">
       <aside class="catalog-filters">
         <h2>Фильтры</h2>
 
@@ -72,10 +79,22 @@
             <legend>Цена</legend>
 
             <label for="price-from">От</label>
-            <input id="price-from" name="price-from" type="number" min="0" placeholder="0">
+            <input
+              id="price-from"
+              name="price-from"
+              type="number"
+              min="0"
+              placeholder="0"
+            >
 
             <label for="price-to">До</label>
-            <input id="price-to" name="price-to" type="number" min="0" placeholder="5000">
+            <input
+              id="price-to"
+              name="price-to"
+              type="number"
+              min="0"
+              placeholder="5000"
+            >
           </fieldset>
 
           <button class="button" type="submit">Применить</button>
@@ -86,33 +105,71 @@
         <h2>Список товаров</h2>
 
         <div class="products-grid">
-           <article class="product-card">
-            <h3>Товар 1</h3>
-            <p>Краткое описание учебного товара.</p>
+          <article class="product-card">
+            <img
+              class="product-card__image"
+              src="images/images (1).jpeg"
+              srcset="
+                images/responsive/airpods-480.jpeg 480w,
+                images/responsive/airpods-960.jpeg 960w
+              "
+              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+              alt="Беспроводные наушники Apple AirPods Pro 2"
+              loading="lazy"
+            >
+
+            <h3>AirPods Pro 2</h3>
+            <p>Беспроводные наушники с активным шумоподавлением.</p>
             <p>Цена: 1000 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+
+            <a class="button" href="product.html">Подробнее</a>
+            <a class="button" href="order.html">Оставить заявку</a>
           </article>
 
           <article class="product-card">
-            <h3>Товар 2</h3>
-            <p>Краткое описание учебного товара.</p>
+            <img
+              class="product-card__image"
+              src="images/macbook.jpeg"
+              srcset="
+                images/responsive/macbook-480.jpeg 480w,
+                images/responsive/macbook-960.jpeg 960w
+              "
+              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+              alt="Ноутбук Apple MacBook Air M4"
+              loading="lazy"
+            >
+
+            <h3>MacBook Air M4 256GB</h3>
+            <p>Ноутбук для учёбы, работы и повседневных задач.</p>
             <p>Цена: 1500 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+
+            <a class="button" href="product.html">Подробнее</a>
+            <a class="button" href="order.html">Оставить заявку</a>
           </article>
 
           <article class="product-card">
-            <h3>Товар 3</h3>
-            <p>Краткое описание учебного товара.</p>
+            <img
+              class="product-card__image"
+              src="images/video.jpeg"
+              srcset="
+                images/responsive/video-480.jpeg 480w,
+                images/responsive/video-960.jpeg 960w
+              "
+              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+              alt="Видеокарта MSI GeForce RTX 2060 SUPER"
+              loading="lazy"
+            >
+
+            <h3>MSI GeForce RTX 2060 SUPER</h3>
+            <p>Видеокарта с 8 ГБ видеопамяти GDDR6.</p>
             <p>Цена: 2000 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+
+            <a class="button" href="product.html">Подробнее</a>
+            <a class="button" href="order.html">Оставить заявку</a>
           </article>
         </div>
       </section>
-    </section>
-
-
-     
-    </section>
+    </div>
   </main>
 
   <footer>
