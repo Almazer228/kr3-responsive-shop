@@ -14,4 +14,7 @@ Thumbs.db
 
 # Переменные окружения
 .env
-.env.*
+.env.*.kr3-backup/
+
+.kr3-backup/
+finish_kr3.py

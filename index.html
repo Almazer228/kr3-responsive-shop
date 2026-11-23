@@ -27,7 +27,7 @@
 
   <header>
     <div class="site-header">
-      <a class="site-logo" href="index.html">New-Balance</a>
+      <a class="site-logo" href="index.html" aria-current="page">New-Balance</a>
 
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
@@ -189,7 +189,7 @@
   >
     <h2 id="order-dialog-title">Оформление заявки</h2>
 
-    <form class="order-form" id="order-form" action="#" method="post" novalidate>
+    <form class="order-form" id="order-form" action="#" method="post">
       <input id="selected-product" name="selected-product" type="hidden">
 
       <div class="form-field">
@@ -274,8 +274,8 @@
       </div>
 
       <div class="form-actions">
-        <button type="button" id="close-order-dialog">Закрыть</button>
-        <button type="submit">Отправить заявку</button>
+        <button class="button" type="button" id="close-order-dialog">Закрыть</button>
+        <button class="button" type="submit">Отправить заявку</button>
       </div>
     </form>
   </dialog>

@@ -653,3 +653,57 @@ footer p {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ==================================================
+   Дополнительные исправления доступности (A11y)
+   ================================================== */
+
+/* Тёмный текст на оранжевых элементах повышает контрастность. */
+/* Контрастность кнопок и ссылки пропуска. */
+.skip-link,
+.button {
+  color: var(--color-bg);
+}
+
+.button:hover {
+  color: var(--color-bg);
+  background-color: var(--color-primary-dark);
+}
+
+/* Единый хорошо заметный фокус при навигации с клавиатуры. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Подпись таблицы характеристик. */
+.product-table caption {
+  padding: 12px 0;
+  color: var(--color-text);
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Скрытые сообщения не должны отображаться до отправки формы. */
+[hidden] {
+  display: none !important;
+}
+
+/* Учитываем настройку пользователя по уменьшению движения. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
