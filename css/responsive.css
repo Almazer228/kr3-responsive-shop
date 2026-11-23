@@ -1,18 +1,7 @@
-/* ==================================================
-   Адаптивная вёрстка — Mobile First
-   ================================================== */
-
-
-/* ==================================================
-   1. Общие настройки
-   ================================================== */
+/* Адаптивная вёрстка — Mobile First */
 
 img {
   max-width: 100%;
-  height: auto;
-}
-
-header {
   height: auto;
 }
 
@@ -20,11 +9,7 @@ main {
   padding: 16px;
 }
 
-
-/* ==================================================
-   2. Шапка сайта и навигация
-   ================================================== */
-
+/* Мобильная шапка */
 .site-header {
   flex-direction: column;
   align-items: flex-start;
@@ -59,20 +44,11 @@ main {
   white-space: normal;
 }
 
-
-/* ==================================================
-   3. Главный экран
-   ================================================== */
-
 .hero {
   padding: 32px 16px;
 }
 
-
-/* ==================================================
-   4. Карточки товаров
-   ================================================== */
-
+/* На телефоне карточки, товар и форма идут в одну колонку */
 .products-grid {
   grid-template-columns: minmax(0, 1fr);
 }
@@ -87,16 +63,9 @@ main {
   aspect-ratio: 4 / 3;
 }
 
-
-/* ==================================================
-   5. Каталог
-   ================================================== */
-
 .catalog-layout {
   grid-template-columns: minmax(0, 1fr);
-  grid-template-areas:
-    "filters"
-    "products";
+  grid-template-areas: "filters" "products";
 }
 
 .catalog-filters {
@@ -107,11 +76,6 @@ main {
   grid-area: products;
 }
 
-
-/* ==================================================
-   6. Страница товара
-   ================================================== */
-
 .product-detail {
   grid-template-columns: minmax(0, 1fr);
 }
@@ -120,11 +84,6 @@ main {
   width: 100%;
   max-height: 320px;
 }
-
-
-/* ==================================================
-   7. Таблица характеристик
-   ================================================== */
 
 .table-wrapper {
   max-width: 100%;
@@ -136,19 +95,11 @@ main {
   min-width: 640px;
 }
 
-
-/* ==================================================
-   8. Формы и кнопки
-   ================================================== */
-
 .order-form {
   grid-template-columns: minmax(0, 1fr);
 }
 
-.filters-form input[type="number"] {
-  min-height: 44px;
-}
-
+.filters-form input[type="number"],
 .form-field input,
 .form-field select,
 .form-field textarea {
@@ -169,56 +120,45 @@ main {
   min-height: 44px;
 }
 
-
-/* ==================================================
-   9. Планшеты — от 768px
-   ================================================== */
-
+/* Планшеты */
 @media (min-width: 768px) {
-
   main {
     padding: 24px;
   }
 
-  /* Шапка */
   .site-header {
+    position: relative;
     flex-direction: row;
     align-items: center;
     gap: 16px;
   }
 
-  .site-header {
-  position: relative;
-}
+  /* Центрируем меню в шапке на широких экранах */
+  .site-nav {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max-content;
+    transform: translate(-50%, -50%);
+  }
 
-.site-nav {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: max-content;
-  transform: translate(-50%, -50%);
-}
+  .site-nav__list {
+    justify-content: center;
+  }
 
-.site-nav__list {
-  justify-content: center;
-}
-  /* Карточки товаров */
   .products-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* Каталог */
   .catalog-layout {
     grid-template-columns: 220px minmax(0, 1fr);
     grid-template-areas: "filters products";
   }
 
-  /* Главный экран */
   .hero {
     padding: 48px 32px;
   }
 
-  /* Страница товара */
   .product-detail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -227,7 +167,6 @@ main {
     max-height: 420px;
   }
 
-  /* Форма */
   .order-form {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 24px;
@@ -248,13 +187,8 @@ main {
   }
 }
 
-
-/* ==================================================
-   10. Большие экраны — от 1024px
-   ================================================== */
-
+/* Ноутбуки и большие экраны */
 @media (min-width: 1024px) {
-
   .products-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -264,13 +198,8 @@ main {
   }
 }
 
-
-/* ==================================================
-   11. Очень узкие экраны — до 360px
-   ================================================== */
-
+/* Очень узкие телефоны */
 @media (max-width: 360px) {
-
   main {
     padding: 12px;
   }
