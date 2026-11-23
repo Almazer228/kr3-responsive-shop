@@ -1,6 +1,5 @@
 /* ==================================================
    1. Переменные проекта
-   Цвета, отступы, скругления и общая ширина контента
    ================================================== */
 
 :root {
@@ -14,6 +13,9 @@
   --color-surface: #181B20;
   --color-surface-accent: #20242B;
   --color-white: #FFFFFF;
+  --color-danger: #F87171;
+  --color-success: #4ADE80;
+  --color-success-bg: rgba(74, 222, 128, 0.1);
 
   /* Отступы */
   --space-xs: 4px;
@@ -61,7 +63,7 @@ main {
 }
 
 section {
-  margin-bottom: 24px;
+  margin-bottom: var(--space-lg);
 }
 
 section h2 {
@@ -87,6 +89,10 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
+button {
+  font: inherit;
+}
+
 :target {
   outline: 2px dashed var(--color-primary);
   outline-offset: 4px;
@@ -94,7 +100,31 @@ a:focus-visible {
 
 
 /* ==================================================
-   3. Шапка сайта и навигация
+   3. Ссылка для перехода к основному содержимому
+   ================================================== */
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2000;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  text-decoration: none;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 3px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+
+/* ==================================================
+   4. Шапка сайта и навигация
    ================================================== */
 
 header {
@@ -102,7 +132,7 @@ header {
   top: 0;
   z-index: 1000;
   width: 100%;
-  height: 90px;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   padding: 0;
@@ -110,7 +140,6 @@ header {
   border-bottom: 1px solid var(--color-border);
 }
 
-/* Контейнер: логотип и меню */
 .site-header {
   display: flex;
   flex-direction: row;
@@ -126,8 +155,7 @@ header {
 
 /* Название сайта */
 .site-logo {
-  position: relative;
-  left: -300px;
+  position: static;
   flex-shrink: 0;
   font-family: "Space Grotesk", sans-serif;
   font-size: 22px;
@@ -149,17 +177,17 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
+  justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 4px;
-  margin: 16px 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .site-nav__list li {
   flex-shrink: 0;
-  margin: 0 0 8px;
+  margin: 0;
 }
 
 /* Ссылки меню */
@@ -180,9 +208,14 @@ header {
   background-color: var(--color-primary);
 }
 
+.site-nav__list a[aria-current="page"] {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
 
 /* ==================================================
-   4. Главная страница и общие секции
+   5. Главная страница и общие секции
    ================================================== */
 
 .hero {
@@ -208,12 +241,12 @@ header {
 
 
 /* ==================================================
-   5. Карточки товаров и изображения
+   6. Карточки товаров и изображения
    ================================================== */
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-lg);
 }
 
@@ -221,6 +254,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+  min-width: 0;
   margin-bottom: 0;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
@@ -259,19 +293,19 @@ header {
   transition: transform 0.3s ease;
 }
 
-/* Увеличение фотографии при наведении на карточку */
+/* Увеличение фотографии при наведении */
 .product-card:hover .product-card__image {
   transform: scale(1.03);
 }
 
 
 /* ==================================================
-   6. Каталог и фильтры
+   7. Каталог и фильтры
    ================================================== */
 
 .catalog-layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 260px minmax(0, 1fr);
   grid-template-areas: "filters products";
   gap: var(--space-lg);
   max-width: var(--container-width);
@@ -280,6 +314,7 @@ header {
 
 .catalog-filters {
   grid-area: filters;
+  min-width: 0;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -288,6 +323,7 @@ header {
 
 .catalog-products {
   grid-area: products;
+  min-width: 0;
 }
 
 .filters-form {
@@ -313,15 +349,85 @@ header {
 
 .filters-form input[type="number"] {
   width: 100%;
+  min-height: 44px;
   padding: 8px 10px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font: inherit;
 }
 
 
 /* ==================================================
-   7. Кнопки
+   8. Страница товара
+   ================================================== */
+
+.product-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-lg);
+}
+
+.product-detail > img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+}
+
+.product-detail__info {
+  min-width: 0;
+}
+
+.product-detail__info h2 {
+  margin-top: 0;
+}
+
+.product-detail__info p {
+  color: var(--color-muted);
+}
+
+.product-detail__info strong {
+  color: var(--color-text);
+}
+
+
+/* ==================================================
+   9. Таблица характеристик
+   ================================================== */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.product-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background-color: var(--color-surface);
+}
+
+.product-table th,
+.product-table td {
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.product-table th {
+  background-color: var(--color-surface-accent);
+  font-weight: 600;
+}
+
+.product-table tbody th {
+  color: var(--color-primary);
+}
+
+
+/* ==================================================
+   10. Кнопки
    ================================================== */
 
 .button {
@@ -332,6 +438,7 @@ header {
   background-color: var(--color-primary);
   color: var(--color-white);
   text-decoration: none;
+  text-align: center;
   cursor: pointer;
 }
 
@@ -351,7 +458,7 @@ header {
 
 
 /* ==================================================
-   8. Хлебные крошки
+   11. Хлебные крошки
    ================================================== */
 
 .breadcrumbs {
@@ -373,23 +480,18 @@ header {
 
 
 /* ==================================================
-   9. Форма и модальное окно
+   12. Формы и модальное окно
    ================================================== */
 
-.order-dialog {
-  width: min(100% - 32px, 560px);
-  padding: var(--space-lg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-surface);
-  color: var(--color-text);
-}
-
-.order-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
+/* Форма оформления заявки */
+.order-form {
+  display: grid;
+  max-width: 760px;
+  margin-top: var(--space-lg);
 }
 
 .form-field {
+  min-width: 0;
   margin-bottom: var(--space-md);
 }
 
@@ -402,30 +504,37 @@ header {
 .form-field select,
 .form-field textarea {
   width: 100%;
+  min-height: 44px;
   padding: 10px 12px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font: inherit;
 }
 
-/* Поля внутри модального окна */
-.order-dialog input,
-.order-dialog select,
-.order-dialog textarea {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  border-color: var(--color-border);
+.form-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--color-muted);
 }
 
 .form-field input[type="checkbox"] {
-  width: auto;
+  width: 18px;
+  min-height: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: var(--color-primary);
 }
 
-.form-field small {
-  display: block;
-  margin-top: var(--space-xs);
-  color: var(--color-muted);
-  font-family: "IBM Plex Mono", monospace;
+.form-field--checkbox label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .form-field input:hover,
@@ -442,19 +551,45 @@ header {
   outline-offset: 3px;
 }
 
+.form-field small {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-muted);
+  font-family: "IBM Plex Mono", monospace;
+}
+
+/* Модальное окно */
+.order-dialog {
+  width: min(100% - 32px, 560px);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.order-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.order-dialog input,
+.order-dialog select,
+.order-dialog textarea {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
 .order-dialog input::placeholder,
 .order-dialog textarea::placeholder {
   color: var(--color-muted);
 }
 
+/* Ошибки и сообщения */
 [aria-invalid="true"] {
   border-color: var(--color-danger);
-}
-
-.form-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
 }
 
 .success-message {
@@ -467,7 +602,24 @@ header {
 
 
 /* ==================================================
-   10. Подвал сайта
+   13. Кнопки формы
+   ================================================== */
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.form-actions .button {
+  min-height: 44px;
+}
+
+
+/* ==================================================
+   14. Подвал сайта
    ================================================== */
 
 footer {
@@ -476,27 +628,28 @@ footer {
   background-color: var(--color-surface);
   border-top: 1px solid var(--color-border);
   color: var(--color-muted);
+  text-align: center;
+}
+
+footer p {
+  margin: 4px 0;
 }
 
 
 /* ==================================================
-   11. Адаптация для узких экранов
+   15. Уменьшение анимации
    ================================================== */
 
-@media (max-width: 760px) {
-  .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 16px 18px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  .site-nav {
-    width: 100%;
-  }
-
-  .site-nav__list {
-    justify-content: flex-start;
-    overflow-x: auto;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

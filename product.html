@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Описание и характеристики AirPods Pro 2.">
+  <title>AirPods Pro 2 — Учебный интернет-магазин</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+  <header>
+    <div class="site-header">
+      <a class="site-logo" href="index.html">New-Balance</a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="product.html" aria-current="page">Товар</a></li>
+          <li><a href="order.html">Заявка</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="index.html">Главная</a>
+      <span aria-current="page">Товар</span>
+    </nav>
+
+    <section class="section">
+      <h1>AirPods Pro 2</h1>
+
+      <div class="product-detail">
+        <img
+          class="product-card__image"
+          src="images/images (1).jpeg"
+          srcset="
+            images/responsive/airpods-480.jpeg 480w,
+            images/responsive/airpods-960.jpeg 960w
+          "
+          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 500px"
+          alt="Беспроводные наушники Apple AirPods Pro 2"
+          decoding="async"
+        >
+
+        <div class="product-detail__info">
+          <h2>Беспроводные наушники Apple AirPods Pro 2</h2>
+
+          <p>
+            Наушники с активным шумоподавлением,
+            адаптивным режимом прозрачности и пространственным аудио.
+          </p>
+
+          <p><strong>Цена: 1000 руб.</strong></p>
+
+          <a class="button" href="order.html">
+            Оставить заявку
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Характеристики товара</h2>
+
+      <div class="table-wrapper">
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th scope="col">Характеристика</th>
+              <th scope="col">Значение</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th scope="row">Производитель</th>
+              <td>Apple</td>
+            </tr>
+            <tr>
+              <th scope="row">Тип устройства</th>
+              <td>Беспроводные наушники</td>
+            </tr>
+            <tr>
+              <th scope="row">Подключение</th>
+              <td>Bluetooth</td>
+            </tr>
+            <tr>
+              <th scope="row">Шумоподавление</th>
+              <td>Активное</td>
+            </tr>
+            <tr>
+              <th scope="row">Назначение</th>
+              <td>Музыка, звонки и повседневное использование</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+  </footer>
+</body>
+</html>
